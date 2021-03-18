@@ -1,0 +1,123 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+
+// vineet k verma  
+// code for creating the link list and traversal of linklist 
+ 
+
+struct node{
+	int data ; 
+	struct node *  link ;
+	
+} ; 
+
+int main(int argc, char *argv[]) {
+int  n , val   ; 
+struct node *p  , *q ; 
+
+printf("Enter the number of nodes:") ; 
+scanf("%d" , &n) ;
+
+
+printf("Enter the head node value  : "); 
+scanf("%d" , &val) ;
+ 
+ q  = (struct node * )malloc(sizeof(struct node)); 
+ 
+ if(!q)
+ {
+ 	printf("Memory nahi hai"); 
+ 	return ; 
+ 	
+ }
+ 
+q->data=  val  ;
+q->link = NULL ;
+
+struct  node  * start  ;
+start = q; 
+ 
+p = start ;
+
+int  i  ;
+
+for(i = 1 ; i <  n  ; i++)
+{
+	printf("Enter the node%d value  : ",  i ); 
+	scanf("%d" , &val) ;
+ 
+ 	q  = (struct node * )malloc(sizeof(struct node)); // comment 1   create kiya new node 
+ 
+     q->data=  val  ;
+     q->link = NULL ;
+
+p-> link  = q ; // yaha par first node ko link kiya new node jo abhi bani  comment 1  mai 
+p = p->link ;// yaha p karlega store nayi node ka address store   
+
+}
+
+ 
+		
+p = start  ;
+int count= 0  ;
+
+while(p!= NULL)
+{
+	printf("%d->" , p->data) ;
+	p = p->link ; 
+count++ ;
+
+	
+}
+printf("\n\n") ;
+
+// node ka count  wala code  ;
+printf(" Count of nodes  : %d" , count); 
+
+// print the last node   
+
+printf("\n\n") ;
+p = start ;
+
+if(start  == NULL)
+	printf("NO nodes !!"); 
+	
+else
+{
+
+
+while(p->link!=NULL)
+	p  = p->link ; 
+
+printf(" Last Node ka data =  %d" , p->data) ;
+
+}
+printf("\n\n") ;
+// print second last node  : 
+
+p = start ; 
+
+if(start == NULL || p->link == NULL)
+printf("not enough nodes!!!\n\n") ;
+
+else 
+{
+	while(p->link->link != NULL)
+	{
+		p = p->link ;
+		
+	}
+	printf(" second last node ka data  = %d" ,p->data ); 
+	
+	
+	
+}
+
+
+
+	
+	return 0;
+}
