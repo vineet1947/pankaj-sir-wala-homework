@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+
+// tower of hanoi 
+//hn= hn-1 -1 ;
+// h1 = 1 
+// number of moves  hn = 2^n-1 ;
+
+// vineet k verma 
+
+
+void towerOfHanoi(int n, char source_rod,
+					char dest_rod, char aux_rod)
+{
+	if (n == 1)
+	{
+		printf("Move disk 1 from rod %c to rod %c \n" , source_rod , dest_rod ) ;
+		
+
+							 
+		return;
+	}
+	towerOfHanoi(n - 1, source_rod , aux_rod, dest_rod);
+	  printf("Move disk %d from rod %c to rod %c \n", n,  source_rod , dest_rod )  ;
+	  
+	  
+
+	towerOfHanoi(n - 1, aux_rod, dest_rod, source_rod);
+}
+
+int main()
+{
+	int n  ;
+	printf("Enter the number of disks : "); 
+	scanf("%d" , &n) ;
+	
+
+	towerOfHanoi(n, 'A', 'C', 'B');
+	return 0;
+}
+
+
