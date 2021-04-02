@@ -1,0 +1,145 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+#define max 50 
+
+
+int arr_queue[max] ;
+
+int front  = -1  , rear = -1 ;
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+void insert() ;
+void dequeue() ;
+void  show() ;
+
+
+int main(int argc, char *argv[]) {
+	
+int  choice ;
+
+while(1)
+{
+	
+	printf("option 1. Insert !!\n ") ;
+	printf("option 2 .Delete!!\n") ;
+	printf("option 3. Peek!! \n") ;
+	printf("option 4. Exit!!\n"); 
+	
+	printf("Enter  choice : \n") ;
+ 	scanf("%d" , &choice) ;
+
+	
+	
+
+switch(choice){
+	
+int val ;
+	
+	case 1 :
+		insert() ;
+		break ;
+		
+	case 2 :
+		
+		dequeue() ;
+		break ;
+		
+		
+	case 3: 
+     	show() ;
+		break  ;
+		
+	case 4: 
+	exit(1) ;
+	break  ;
+	
+	
+	default  :
+		printf("Invalid number!!") ;
+	
+		
+}
+
+	
+	
+	
+}
+	
+	return 0;
+}
+
+
+
+
+void insert()
+{ 
+
+int val; 
+
+	
+	if (rear == max -1 )
+	{
+	
+	printf("OverFlow!!") ;
+	return ;
+}
+
+
+else 
+{
+	if(front ==-1)
+	 front =0  ;
+printf("Enter a number  : "); 
+scanf("%d" , &val) ;
+	rear++;
+	arr_queue[rear] = val  ;
+
+
+
+}
+}
+
+
+void  dequeue()
+{
+	
+	int temp ;
+	
+	if(front == -1 || front > rear)
+	{
+		printf("Underflow!!") ;
+		return ;
+		
+	}
+	
+
+	
+	else{
+		temp = arr_queue[front++];
+	
+		printf("The elements deleted :  %d \n" , temp) ;
+		
+	}
+	
+}
+
+void show()
+{
+	int i  ;
+	
+	if(front == -1)
+	printf("Empty hai  !!"); 
+	
+	
+	else{
+			printf("Queue  :\n");
+			for(i = front ; i <= rear ; i++)
+			printf("%d " , arr_queue[i]) ;
+			printf("\n") ;
+			 
+	}
+}
+
+
